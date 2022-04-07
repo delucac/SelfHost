@@ -10,4 +10,5 @@ mkdir SelfHost
 wget https://raw.githubusercontent.com/delucac/SelfHost/main/SelfHost.sh
 chmod 700 SelfHost.sh
 ./SelfHost.sh
+
 ```
