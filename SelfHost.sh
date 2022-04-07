@@ -7,13 +7,24 @@
 #
 #
 
+###############################
+#functions
+
+
+##############################
+
+
+#welcome user
 clear
 echo "Welcome. Please make a selection below"
 run=5
+
+#Main loop for program
 while [ $run -gt 1 ]
 do
 
-echo "===Menu==="
+#main menu
+echo "=== Menu ==="
 echo "1. Setup configuration"
 echo "2. Install static website"
 #echo "3. Install dynamic website"
@@ -23,8 +34,10 @@ echo "E. Exit"
 
 read -p "Please make a selection: " choice
 echo "\n"
+
+#cases for menu input
 case $choice in
-	1)
+	1) #Setup data & configs
 		if [ -d ./data/ ]
 		then
 			echo "Data files already exist\n"
@@ -45,12 +58,12 @@ case $choice in
 			mkdir modules
 		fi
 	;;
-	2)
+	2) #install static website (apache2)
 		if [ -e "./modules/staticWeb.sh" ]
 		then
 			chmod 700 ./modules/staticWeb.sh
 			./modules/staticWeb.sh
-			echo "Returning to main script\n"
+			echo "Returning to main menu\n"
 		fi
 
 		if [ ! -e "./modules/staticWeb.sh" ]
@@ -74,7 +87,16 @@ case $choice in
 
 	;;
 
-	#case allows for e or E
+	#About, pretty self explanatory
+	0)
+		clear
+		echo "test"
+		echo "\n"
+		read -p "Push enter to return to menu" trash
+	;;
+
+	#case allows for e or E, regex is pretty useful
+	#Exit program
 	[eE])
 		run=0
 	;;
@@ -87,6 +109,7 @@ case $choice in
 esac
 done
 
+#finish script
 clear
 echo "Thank you for using this script"
 exit 0
