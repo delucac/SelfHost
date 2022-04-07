@@ -6,7 +6,6 @@
 # Modular script for setting up self hosted services
 #
 #
-#
 
 clear
 echo "Welcome. Please make a selection below"
@@ -14,12 +13,12 @@ run=5
 while [ $run -gt 1 ]
 do
 
-echo "Menu"
+echo "===Menu==="
 echo "1. Setup configuration"
 echo "2. Install static website"
-echo "3. Install dynamic website"
-echo "4. Install mail server"
-echo "0. About\n"
+#echo "3. Install dynamic website"
+#echo "4. Install mail server"
+#echo "0. About"
 echo "E. Exit"
 
 read -p "Please make a selection: " choice
@@ -49,6 +48,7 @@ case $choice in
 	2)
 		if [ -e "./modules/staticWeb.sh" ]
 		then
+			chmod 700 ./modules/staticWeb.sh
 			./modules/staticWeb.sh
 			echo "Returning to main script\n"
 		fi
@@ -56,24 +56,30 @@ case $choice in
 		if [ ! -e "./modules/staticWeb.sh" ]
 		then
 			echo "Module not present"
-			read -p "Would you like to download the file? (y/n): " download
-			if [ $download = "y" || $download = "Y" ]
-			then
-				echo "download"
-			fi
+			read -p "Would you like to download the file? (y/n): " prompt
+			case $prompt in
+				[yY]*)
+					echo "downloading file"
+					cd modules
+					wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/staticWeb.sh
+					chmod 700 staticWeb.sh
+					cd ../
+					./modules/staticWeb.sh
+				;;
+				[nN]*)
+					echo "returning to menu"
+				;;
+			esac
 		fi
 
 	;;
 
-	#Two cases for user error
-	e)
-		run=0
-	;;
-	E)
+	#case allows for e or E
+	[eE])
 		run=0
 	;;
 
-	#Error checking
+	#Error checking/default
 	*)
 		clear
 		echo "Error: invalid value"

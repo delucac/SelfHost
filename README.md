@@ -1,10 +1,9 @@
 # SelfHost
 
-# #About
+## About
 This project was created as the practical portion of a master's project
 
 ## Install instructions
-
 ```
 mkdir SelfHost
 wget https://raw.githubusercontent.com/delucac/SelfHost/main/SelfHost.sh
