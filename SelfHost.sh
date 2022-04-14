@@ -30,7 +30,7 @@ echo "2. Install static website"
 #echo "3. Install dynamic website"
 #echo "4. Install mail server"
 echo "9. Setup secure chat"
-#echo "0. About"
+echo "0. About website"
 echo "E. Exit"
 
 read -p "Please make a selection: " choice
@@ -89,14 +89,39 @@ case $choice in
 	;;
 	#Basically runs & configures the everything to setup chat
 	9)
-		echo "chat test"
+		if [ -e "./modules/chatSetup.sh" ]
+		then
+			chmod 700 ./modules/chatSetup.sh
+			./modules/chatSetup.sh
+			echo "Returning to main menu\n"
+		fi
+
+                if [ ! -e "./modules/chatSetup.sh" ]
+                then
+                        echo "Module not present"
+                        read -p "Would you like to download the file? (y/n): " prompt
+                        case $prompt in
+                                [yY]*)
+                                        echo "downloading file"
+                                        #cd modules
+                                        #wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/staticWeb.sh
+                                        #chmod 700 chatSetup.sh
+                                        #cd ../
+                                        #./modules/chatSetup.sh
+                                ;;
+                                [nN]*)
+                                        echo "returning to menu"
+                                ;;
+                        esac
+                fi
+
 	;;
 	#About, pretty self explanatory
 	0)
-		clear
-		echo "test"
+		xdg-open https://github.com/delucac/SelfHost
+		echo "Opening website"
 		echo "\n"
-		read -p "Push enter to return to menu" trash
+		#read -p "Push enter to return to menu" trash
 	;;
 
 	#case allows for e or E, regex is pretty useful
