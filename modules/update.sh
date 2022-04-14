@@ -10,3 +10,5 @@
 echo "update.sh"
 sudo apt update
 sudo apt upgrade
+exit 0
+

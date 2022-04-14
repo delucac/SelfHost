@@ -29,6 +29,7 @@ echo "1. Setup configuration"
 echo "2. Install static website"
 #echo "3. Install dynamic website"
 #echo "4. Install mail server"
+echo "9. Setup secure chat"
 #echo "0. About"
 echo "E. Exit"
 
@@ -86,7 +87,10 @@ case $choice in
 		fi
 
 	;;
-
+	#Basically runs & configures the everything to setup chat
+	9)
+		echo "chat test"
+	;;
 	#About, pretty self explanatory
 	0)
 		clear

@@ -6,7 +6,7 @@
 # Script for installing a static webserver
 #
 #
-echo "staticWeb.sh"
+echo "Static website setup"
 
 sudo apt update
 sudo apt install apache2
@@ -16,6 +16,7 @@ sudo systemctl restart apache2 1> /dev/null
 sudo systemctl enable apache2 1> /dev/null
 
 clear
+
 echo "===Push q to exit the status screen===\n"
 sudo systemctl status apache2
 clear
@@ -29,5 +30,11 @@ case $prompt in
 		#none
 	;;
 esac
+if [ ! -e "./website" ]
+then
+	ln -s /var/www/html/ website
+	echo "Creating link to website in current directory"
+	echo "cd website to access it"
+fi
 
 exit 0
