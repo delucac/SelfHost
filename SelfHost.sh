@@ -79,6 +79,7 @@ case $choice in
 					chmod 700 staticWeb.sh
 					cd ../
 					./modules/staticWeb.sh
+					echo "Returning to main menu\n"
 				;;
 				[nN]*)
 					echo "returning to menu"
@@ -103,11 +104,12 @@ case $choice in
                         case $prompt in
                                 [yY]*)
                                         echo "downloading file"
-                                        #cd modules
-                                        #wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/staticWeb.sh
-                                        #chmod 700 chatSetup.sh
-                                        #cd ../
-                                        #./modules/chatSetup.sh
+                                        cd modules
+					wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/chatSetup.sh
+                                        chmod 700 chatSetup.sh
+                                        cd ../
+                                        ./modules/chatSetup.sh
+					echo "Returning to main menu\n"
                                 ;;
                                 [nN]*)
                                         echo "returning to menu"
