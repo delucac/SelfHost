@@ -4,6 +4,7 @@
 This project was created as the practical portion of a master's project
 
 ## Install instructions
+Please run the commands below to install
 ```
 mkdir SelfHost
 cd SelfHost

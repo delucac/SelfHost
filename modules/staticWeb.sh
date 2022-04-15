@@ -33,7 +33,7 @@ echo "website available on local network via $(ip route get 8.8.8.8 | grep -oP '
 read -p "Would you like to open your website? (y/n): " prompt
 case $prompt in
 	[yY]*)
-		xdg-open http://127.0.0.1
+		xdg-open http://127.0.0.1 1> /dev/null 2> /dev/null
 	;;
 	*)
 		#none

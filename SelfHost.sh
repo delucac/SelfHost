@@ -27,10 +27,14 @@ do
 echo "=== Menu ==="
 echo "1. Setup configuration"
 echo "2. Install static website"
+
+#Want to use npm for dynamic website, however due to time will likely be cut
 #echo "3. Install dynamic website"
+#SMTP may be swapped for wget or other plans...
 #echo "4. Install mail server"
+
 echo "9. Setup secure chat"
-echo "0. About website"
+echo "0. Open About Website"
 echo "E. Exit"
 
 read -p "Please make a selection: " choice
@@ -130,7 +134,7 @@ case $choice in
 	;;
 	#About, pretty self explanatory
 	0)
-		xdg-open https://github.com/delucac/SelfHost
+		xdg-open https://github.com/delucac/SelfHost 1> /dev/null 2> /dev/null
 		echo "Opening website"
 		echo "\n"
 		#read -p "Push enter to return to menu" trash
