@@ -58,6 +58,16 @@ case $choice in
 			echo "Creating modules folder\n"
 			mkdir modules
 		fi
+                if [ -d ./modules/webpages ]
+                then
+                        echo "modules folder exists\n"
+                fi
+                if [ ! -d ./modules/webpages ]
+                then
+                        echo "Creating modules folder\n"
+                        mkdir modules/webpages
+                fi
+
 	;;
 	2) #install static website (apache2)
 		if [ -e "./modules/staticWeb.sh" ]
