@@ -21,6 +21,15 @@ echo "===Push q to exit the status screen===\n"
 sudo systemctl status apache2
 clear
 
+
+#Create link to website
+if [ ! -e "./website" ]
+then
+	ln -s /var/www/html/ website
+	echo "Creating link to website in current directory"
+fi
+
+
 read -p "Would you like to open your website? (y/n): " prompt
 case $prompt in
 	[yY]*)
@@ -30,11 +39,5 @@ case $prompt in
 		#none
 	;;
 esac
-if [ ! -e "./website" ]
-then
-	ln -s /var/www/html/ website
-	echo "Creating link to website in current directory"
-	echo "cd website to access it"
-fi
 
 exit 0
