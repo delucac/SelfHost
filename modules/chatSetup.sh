@@ -13,7 +13,7 @@ echo "chatSetup.sh"
 echo "Adding directory to website"
 sudo mkdir /var/www/html/key 1> /dev/null 2> /dev/null
 
-#Check for index file locally before sourcing
+#Check for redirect file locally before sourcing
 if [ -e "./modules/webpages/redirect.html" ]
 then
 	sudo cp modules/webpages/redirect.html /var/www/html/key/index.html
@@ -21,9 +21,9 @@ fi
 if [ ! -e "./modules/webpages/redirect.html" ]
 then
 	echo "index file not present, downloading"
-	cd modules
-	wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/index.html
-	cd ..
+	cd modules/webpages
+	wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/webpages/redirect.html
+	cd ../../
 	sudo cp modules/webpages/redirect.html /var/www/html/key/index.html
 fi
 

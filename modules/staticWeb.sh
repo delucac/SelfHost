@@ -29,7 +29,7 @@ then
 	echo "Creating link to website in current directory"
 fi
 
-
+echo "website available on local network via $(ip route get 8.8.8.8 | grep -oP 'src \K[^ ]+')"
 read -p "Would you like to open your website? (y/n): " prompt
 case $prompt in
 	[yY]*)
