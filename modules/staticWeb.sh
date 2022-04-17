@@ -31,11 +31,22 @@ then
 	echo "Creating link to website in current directory"
 fi
 
+#copy welcome page
+if [ ! -e "./modules/webpages/welcome.html" ]
+then
+	echo "Welcome page not present, downloading"
+	cd modules/webpages
+	wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/webpages/welcome.html
+	cd ../../
+fi
+sudo mkdir /var/www/html/selfHost
+sudo cp modules/webpages/welcome.html /var/www/html/selfHost/index.html
+
 echo "website available on local network via $(ip route get 8.8.8.8 | grep -oP 'src \K[^ ]+')"
 read -p "Would you like to open your website? (y/n): " prompt
 case $prompt in
 	[yY]*)
-		xdg-open http://127.0.0.1 1> /dev/null 2> /dev/null
+		xdg-open http://127.0.0.1 1/selfHost> /dev/null 2> /dev/null
 	;;
 	*)
 		#none

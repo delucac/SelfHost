@@ -28,7 +28,7 @@ case $keychoice in
 		read -p "please enter the ip address of your friend: " ip
 		read -p "Please enter the name your friend used: " name
 		cd data/pub_keys
-		wget $ip/key/$name.pub.pem
+		wget $ip/selfHost/key/$name.pub.pem
 		cd ../../
 	;;
 	2)

@@ -69,92 +69,52 @@ case $choice in
 
 	;;
 	2) #install static website (apache2)
-		if [ -e "./modules/staticWeb.sh" ]
-		then
-			chmod 700 ./modules/staticWeb.sh
-			./modules/staticWeb.sh
-			echo "Returning to main menu\n"
-		fi
-
 		if [ ! -e "./modules/staticWeb.sh" ]
 		then
-			echo "Module not present"
-			read -p "Would you like to download the file? (y/n): " prompt
-			case $prompt in
-				[yY]*)
-					echo "downloading file"
-					cd modules
-					wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/staticWeb.sh
-					chmod 700 staticWeb.sh
-					cd ../
-					./modules/staticWeb.sh
-					echo "Returning to main menu\n"
-				;;
-				[nN]*)
-					echo "returning to menu"
-				;;
-			esac
+			echo "Module not present, downloading"
+				cd modules
+				wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/staticWeb.sh
+				cd ../
+				./modules/staticWeb.sh
 		fi
+
+		chmod 700 ./modules/staticWeb.sh
+		./modules/staticWeb.sh
+		echo "Returning to main menu\n"
 
 	;;
 	#Basically runs & configures the everything to setup chat
 	3)
-		if [ -e "./modules/chatSetup.sh" ]
-		then
-			chmod 700 ./modules/chatSetup.sh
-			./modules/chatSetup.sh
-			echo "Returning to main menu\n"
-		fi
-
                 if [ ! -e "./modules/chatSetup.sh" ]
                 then
-                        echo "Module not present"
-                        read -p "Would you like to download the file? (y/n): " prompt
-                        case $prompt in
-                                [yY]*)
-                                        echo "downloading file"
-                                        cd modules
-					wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/chatSetup.sh
-                                        chmod 700 chatSetup.sh
-                                        cd ../
-                                        ./modules/chatSetup.sh
-					echo "Returning to main menu\n"
-                                ;;
-                                [nN]*)
-                                        echo "Returning to menu"
-                                ;;
-                        esac
+                        echo "Module not present, downloading"
+			cd modules
+			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/chatSetup.sh
+			cd ../
+			./modules/chatSetup.sh
+			echo "Returning to main menu\n"
                 fi
+
+		chmod 700 ./modules/chatSetup.sh
+		./modules/chatSetup.sh
+		echo "Returning to main menu\n"
 
 	;;
 	#script to collect public keys from users
 	4)
-		if [ -e "./modules/pubKey.sh" ]
-		then
-			chmod 700 ./modules/pubKey.sh
-			./modules/pubKey.sh
-			echo "Returning to menu"
-		fi
-
 		if [ ! -e "./modules/pubKey.sh" ]
 		then
-			echo "Module not present"
-			read -p "Would you like to download the file? (y/n): " prompt
-			case $prompt in
-				[yY])
-					echo "downloading file"
-					cd modules
-					wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/pubKey.sh
-					chmod 700 pubKey.sh
-					cd ../
-					./modules/pubKey.sh
-					echo "Returing to main menu\n"
-				;;
-				*)
-					echo "Returning to menu"
-				;;
-			esac
+			echo "Module not present, downloading"
+			cd modules
+			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/pubKey.sh
+			cd ../
+			./modules/pubKey.sh
+			echo "Returing to main menu\n"
 		fi
+
+		chmod 700 ./modules/pubKey.sh
+		./modules/pubKey.sh
+		echo "Returning to menu"
 	;;
 	#About, pretty self explanatory
 	0)
