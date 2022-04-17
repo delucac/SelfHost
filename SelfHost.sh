@@ -149,8 +149,11 @@ case $choice in
 					cd ../
 					./modules/pubKey.sh
 					echo "Returing to main menu\n"
+				;;
 				*)
 					echo "Returning to menu"
+				;;
+			esac
 		fi
 	;;
 	#About, pretty self explanatory
