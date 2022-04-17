@@ -121,7 +121,7 @@ case $choice in
 					echo "Returning to main menu\n"
                                 ;;
                                 [nN]*)
-                                        echo "returning to menu"
+                                        echo "Returning to menu"
                                 ;;
                         esac
                 fi
@@ -129,8 +129,29 @@ case $choice in
 	;;
 	#script to collect public keys from users
 	4)
-		./modules/pubKey.sh
-		echo "Returing to main menu\n"
+		if [ -e "./modules/pubKey.sh" ]
+		then
+			chmod 700 ./modules/pubKey.sh
+			./modules/pubKey.sh
+			echo "Returning to menu"
+		fi
+
+		if [ ! -e "./modules/pubKey.sh" ]
+		then
+			echo "Module not present"
+			read -p "Would you like to download the file? (y/n): " prompt
+			case $prompt in
+				[yY])
+					echo "downloading file"
+					cd modules
+					wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/pubKey.sh
+					chmod 700 pubKey.sh
+					cd ../
+					./modules/pubKey.sh
+					echo "Returing to main menu\n"
+				*)
+					echo "Returning to menu"
+		fi
 	;;
 	#About, pretty self explanatory
 	0)
