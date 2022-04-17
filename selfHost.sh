@@ -28,6 +28,7 @@ echo "2. Install static website"
 
 echo "3. Setup secure chat"
 echo "4. public key management"
+echo "5. Post a message"
 
 echo "0. Open About Website"
 echo "E. Exit"
@@ -40,14 +41,15 @@ case $choice in
 	1) #Setup data & configs
 		if [ -d ./data/ ]
 		then
-			echo "Data files already exist\n"
+			echo "Data folder already exists\n"
 		fi
 
 		if [ ! -d ./data/ ]
 		then
-			echo "Creating data files\n"
+			echo "Creating data folder\n"
 			mkdir data
 		fi
+
 		if [ -d ./modules/ ]
 		then
 			echo "modules folder exists\n"
@@ -57,14 +59,25 @@ case $choice in
 			echo "Creating modules folder\n"
 			mkdir modules
 		fi
+
                 if [ -d ./modules/webpages ]
                 then
-                        echo "modules folder exists\n"
+                        echo "webpages folder exists\n"
                 fi
                 if [ ! -d ./modules/webpages ]
                 then
-                        echo "Creating modules folder\n"
+                        echo "Creating webpages folder\n"
                         mkdir modules/webpages
+                fi
+
+                if [ -d ./data/tmp ]
+                then
+                        echo "tmp folder exists\n"
+                fi
+                if [ ! -d ./data/tmp ]
+                then
+                        echo "Creating tmp folder\n"
+                        mkdir data/tmp
                 fi
 
 	;;
@@ -91,7 +104,6 @@ case $choice in
 			cd modules
 			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/chatSetup.sh
 			cd ../
-			./modules/chatSetup.sh
 			echo "Returning to main menu\n"
                 fi
 
@@ -108,12 +120,25 @@ case $choice in
 			cd modules
 			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/pubKey.sh
 			cd ../
-			./modules/pubKey.sh
 			echo "Returing to main menu\n"
 		fi
 
 		chmod 700 ./modules/pubKey.sh
 		./modules/pubKey.sh
+		echo "Returning to menu"
+	;;
+	5)
+		if [ ! -e "./modules/sendMessage.sh" ]
+		then
+			echo "Module not present, downloading"
+			cd modules
+			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/sendMessage.sh
+			cd ../
+
+		fi
+
+		chmod 700 ./modules/sendMessage.sh
+		./modules/sendMessage.sh
 		echo "Returning to menu"
 	;;
 	#About, pretty self explanatory

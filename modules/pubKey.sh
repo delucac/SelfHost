@@ -41,11 +41,10 @@ case $keychoice in
 			j=$((j+1))
 		done
 		read -p "Please pick a key to manage: " keychoice
-		echo "$keychoice"
+		echo $(ls | head -n $keychoice | tail -n 1)
 		cd ../../
 		keyrun=0
 	;;
-
 	[eE])
 		keyrun=0
 	;;
