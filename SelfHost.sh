@@ -7,13 +7,6 @@
 #
 #
 
-###############################
-#functions
-
-
-##############################
-
-
 #welcome user
 clear
 echo "Welcome. Please make a selection below"
@@ -33,7 +26,9 @@ echo "2. Install static website"
 #SMTP may be swapped for wget or other plans...
 #echo "4. Install mail server"
 
-echo "9. Setup secure chat"
+echo "3. Setup secure chat"
+echo "4. collect public keys"
+
 echo "0. Open About Website"
 echo "E. Exit"
 
@@ -103,7 +98,7 @@ case $choice in
 
 	;;
 	#Basically runs & configures the everything to setup chat
-	9)
+	3)
 		if [ -e "./modules/chatSetup.sh" ]
 		then
 			chmod 700 ./modules/chatSetup.sh
@@ -156,5 +151,5 @@ done
 
 #finish script
 clear
-echo "Thank you for using this script"
+echo "Thank you for using SelfHost"
 exit 0

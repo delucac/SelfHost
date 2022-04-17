@@ -6,6 +6,8 @@
 # Script for installing a static webserver
 #
 #
+
+
 echo "Static website setup"
 
 sudo apt update

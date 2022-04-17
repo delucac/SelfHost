@@ -20,31 +20,31 @@ then
 fi
 if [ ! -e "./modules/webpages/redirect.html" ]
 then
-	echo "index file not present, downloading"
+	echo "webpage file not present, downloading"
 	cd modules/webpages
 	wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/webpages/redirect.html
 	cd ../../
 	sudo cp modules/webpages/redirect.html /var/www/html/key/index.html
 fi
 
-#make file for parking
-touch data/keyName
-echo "selfHost" >> data/keyName
-
 cd data
 
-#use ssh-kegen to generate keys
-# <test sends the contents of test to the command
-# 1> sends the output of the command to nothing
-echo "Generating key pair"
-ssh-keygen < keyName 1> /dev/null
-
+#use openssl to generate keys
+echo "Generating private key"
+read -p "Please enter your name: " nameIn
+openssl genrsa -aes128 -out $nameIn.pem 1024
+echo "Generating public key"
+openssl rsa -in $nameIn.pem -pubout > $nameIn.pub.pem
 
 #copy contents to website directory
-sudo cp selfHost.pub /var/www/html/key 1> /dev/null
+sudo cp $nameIn.pub.pem /var/www/html/key
 
-#clean up
-rm keyName
+#make keys folder and pub keys folder
+mkdir pub_keys
+mkdir keys
+
+#move keys to keys folder
+mv $nameIn* ./keys
 
 cd ../
 
