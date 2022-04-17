@@ -27,7 +27,7 @@ echo "2. Install static website"
 #echo "4. Install mail server"
 
 echo "3. Setup secure chat"
-echo "4. collect public keys"
+echo "4. public key management"
 
 echo "0. Open About Website"
 echo "E. Exit"
@@ -126,6 +126,11 @@ case $choice in
                         esac
                 fi
 
+	;;
+	#script to collect public keys from users
+	4)
+		./modules/pubKey.sh
+		echo "Returing to main menu\n"
 	;;
 	#About, pretty self explanatory
 	0)
