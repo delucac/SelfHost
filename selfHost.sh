@@ -29,6 +29,7 @@ echo "2. Install static website"
 echo "3. Setup secure chat"
 echo "4. public key management"
 echo "5. Post a message"
+echo "6. Collect a message"
 
 echo "0. Open About Website"
 echo "E. Exit"
@@ -127,6 +128,7 @@ case $choice in
 		./modules/pubKey.sh
 		echo "Returning to menu"
 	;;
+	#Post message
 	5)
 		if [ ! -e "./modules/sendMessage.sh" ]
 		then
@@ -139,6 +141,21 @@ case $choice in
 
 		chmod 700 ./modules/sendMessage.sh
 		./modules/sendMessage.sh
+		echo "Returning to menu"
+	;;
+	#retrieve message
+	6)
+		if [ ! -e "./modules/grabMessage.sh" ]
+		then
+			echo "Module not present, downloading"
+			cd modules
+			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/grabMessage.sh
+			cd ../
+
+		fi
+
+		chmod 700 ./modules/grabMessage.sh
+		./modules/grabMessage.sh
 		echo "Returning to menu"
 	;;
 	#About, pretty self explanatory
