@@ -30,6 +30,7 @@ echo "3. Setup secure chat"
 echo "4. public key management"
 echo "5. Post a message"
 echo "6. Collect a message"
+echo "7. manage webserver status"
 
 echo "0. Open About Website"
 echo "E. Exit"
@@ -156,6 +157,19 @@ case $choice in
 
 		chmod 700 ./modules/grabMessage.sh
 		./modules/grabMessage.sh
+		echo "Returning to menu"
+	;;
+	7)
+		if [ ! -e "./modules/toggle.sh" ]
+		then
+			echo "Module not present, downloading"
+			cd modules
+			wget https://raw.githubusercontent.com/delucac/SelfHost/main/modules/toggle.sh
+			cd ../
+		fi
+
+		chmod 700 ./modules/toggle.sh
+		./modules/toggle.sh
 		echo "Returning to menu"
 	;;
 	#About, pretty self explanatory
