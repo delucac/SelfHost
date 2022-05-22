@@ -11,7 +11,7 @@
 echo "Static website setup"
 
 sudo apt update
-sudo apt install apache2
+sudo apt install apache2 apache2-doc
 
 #1> is used to silence output
 sudo systemctl restart apache2 1> /dev/null
