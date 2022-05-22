@@ -30,6 +30,10 @@ sudo cp modules/webpages/redirect.html /var/www/html/message/selfHost/index.html
 
 cd data
 
+#Use openPGP to generate keys
+
+
+
 #use openssl to generate keys
 echo "Generating private key"
 read -p "Please enter your name: " nameIn
